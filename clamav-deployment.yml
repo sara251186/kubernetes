@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sshanmugam-clamav-deployment
+spec:
+  selector:
+    matchLabels:
+      app: sshanmugam-clamav
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: sshanmugam-clamav
+    spec:
+      containers:
+        - name: sshanmugam-clamav
+          image: niilo/clamav-rest
+          ports:
+            - containerPort: 9000
+              name: clamav-port
